@@ -62,9 +62,9 @@ namespace Math
             this.ProgramVersionLabel.AutoSize = true;
             this.ProgramVersionLabel.Location = new System.Drawing.Point(85, 43);
             this.ProgramVersionLabel.Name = "ProgramVersionLabel";
-            this.ProgramVersionLabel.Size = new System.Drawing.Size(58, 13);
+            this.ProgramVersionLabel.Size = new System.Drawing.Size(67, 13);
             this.ProgramVersionLabel.TabIndex = 2;
-            this.ProgramVersionLabel.Text = "Версія 1.0";
+            this.ProgramVersionLabel.Text = "Версія 1.0.1";
             // 
             // ProgramDeveloperLabel
             // 
@@ -100,6 +100,7 @@ namespace Math
             this.Name = "AboutForm";
             this.Text = "Про програму";
             this.Load += new System.EventHandler(this.AboutForm_Load);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.AboutForm_KeyDown);
             ((System.ComponentModel.ISupportInitialize)(this.ProgramLogoPictureBox)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

@@ -51,7 +51,7 @@ namespace Math
             this.DeleteOneButton = new System.Windows.Forms.Button();
             this.ClearButton = new System.Windows.Forms.Button();
             this.PositiveNegativeButton = new System.Windows.Forms.Button();
-            this.OperationLabel = new System.Windows.Forms.Label();
+            this.Num1AndOperationLabel = new System.Windows.Forms.Label();
             this.MenuStrip = new System.Windows.Forms.MenuStrip();
             this.ThemesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.AutoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -194,6 +194,7 @@ namespace Math
             this.Button0.Size = new System.Drawing.Size(34, 34);
             this.Button0.TabIndex = 11;
             this.Button0.Text = "0";
+            this.ToolTip.SetToolTip(this.Button0, "Alt+0 для написання двох нулів");
             this.Button0.UseVisualStyleBackColor = true;
             this.Button0.Click += new System.EventHandler(this.Button0_Click);
             // 
@@ -204,6 +205,7 @@ namespace Math
             this.AddButton.Size = new System.Drawing.Size(34, 74);
             this.AddButton.TabIndex = 17;
             this.AddButton.Text = "+";
+            this.ToolTip.SetToolTip(this.AddButton, "Ctrl++ для зміни числа на додатнє");
             this.AddButton.UseVisualStyleBackColor = true;
             this.AddButton.Click += new System.EventHandler(this.AddButton_Click);
             // 
@@ -214,6 +216,7 @@ namespace Math
             this.SubstractButton.Size = new System.Drawing.Size(34, 34);
             this.SubstractButton.TabIndex = 16;
             this.SubstractButton.Text = "-";
+            this.ToolTip.SetToolTip(this.SubstractButton, "Ctrl+- для зміни числа на від\'ємне");
             this.SubstractButton.UseVisualStyleBackColor = true;
             this.SubstractButton.Click += new System.EventHandler(this.SubstractButton_Click);
             // 
@@ -266,17 +269,16 @@ namespace Math
             this.PositiveNegativeButton.Size = new System.Drawing.Size(34, 34);
             this.PositiveNegativeButton.TabIndex = 21;
             this.PositiveNegativeButton.Text = "+/-";
-            this.ToolTip.SetToolTip(this.PositiveNegativeButton, "Ctrl++ для зміни числа на додатнє\r\nCtrl+- для зміни числа на від\'ємне");
             this.PositiveNegativeButton.UseVisualStyleBackColor = true;
             this.PositiveNegativeButton.Click += new System.EventHandler(this.PositiveNegativeButton_Click);
             // 
-            // OperationLabel
+            // Num1AndOperationLabel
             // 
-            this.OperationLabel.AutoSize = true;
-            this.OperationLabel.Location = new System.Drawing.Point(12, 40);
-            this.OperationLabel.Name = "OperationLabel";
-            this.OperationLabel.Size = new System.Drawing.Size(0, 13);
-            this.OperationLabel.TabIndex = 22;
+            this.Num1AndOperationLabel.AutoSize = true;
+            this.Num1AndOperationLabel.Location = new System.Drawing.Point(12, 40);
+            this.Num1AndOperationLabel.Name = "Num1AndOperationLabel";
+            this.Num1AndOperationLabel.Size = new System.Drawing.Size(0, 13);
+            this.Num1AndOperationLabel.TabIndex = 22;
             // 
             // MenuStrip
             // 
@@ -306,7 +308,7 @@ namespace Math
             this.AutoToolStripMenuItem.CheckState = System.Windows.Forms.CheckState.Checked;
             this.AutoToolStripMenuItem.Name = "AutoToolStripMenuItem";
             this.AutoToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.A)));
-            this.AutoToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.AutoToolStripMenuItem.Size = new System.Drawing.Size(151, 22);
             this.AutoToolStripMenuItem.Text = "Авто";
             this.AutoToolStripMenuItem.Click += new System.EventHandler(this.AutoToolStripMenuItem_Click);
             // 
@@ -314,7 +316,7 @@ namespace Math
             // 
             this.LightToolStripMenuItem.Name = "LightToolStripMenuItem";
             this.LightToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.L)));
-            this.LightToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.LightToolStripMenuItem.Size = new System.Drawing.Size(151, 22);
             this.LightToolStripMenuItem.Text = "Світла";
             this.LightToolStripMenuItem.Click += new System.EventHandler(this.LightToolStripMenuItem_Click);
             // 
@@ -322,7 +324,7 @@ namespace Math
             // 
             this.DarkToolStripMenuItem.Name = "DarkToolStripMenuItem";
             this.DarkToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.D)));
-            this.DarkToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.DarkToolStripMenuItem.Size = new System.Drawing.Size(151, 22);
             this.DarkToolStripMenuItem.Text = "Темна";
             this.DarkToolStripMenuItem.Click += new System.EventHandler(this.DarkToolStripMenuItem_Click);
             // 
@@ -338,7 +340,7 @@ namespace Math
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(177, 265);
-            this.Controls.Add(this.OperationLabel);
+            this.Controls.Add(this.Num1AndOperationLabel);
             this.Controls.Add(this.PositiveNegativeButton);
             this.Controls.Add(this.DeleteOneButton);
             this.Controls.Add(this.ClearButton);
@@ -397,7 +399,7 @@ namespace Math
         private System.Windows.Forms.Button DeleteOneButton;
         private System.Windows.Forms.Button ClearButton;
         private System.Windows.Forms.Button PositiveNegativeButton;
-        private System.Windows.Forms.Label OperationLabel;
+        private System.Windows.Forms.Label Num1AndOperationLabel;
         private System.Windows.Forms.MenuStrip MenuStrip;
         private System.Windows.Forms.ToolStripMenuItem ThemesToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem AutoToolStripMenuItem;

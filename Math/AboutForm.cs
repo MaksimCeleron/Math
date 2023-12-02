@@ -18,6 +18,14 @@ namespace Math
             InitializeComponent();
         }
 
+        private void AboutForm_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyValue == (char)Keys.Escape)
+            {
+                this.Close();
+            }
+        }
+
         private void AboutForm_Load(object sender, EventArgs e)
         {
             if (Registry.GetValue("HKEY_CURRENT_USER\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Themes\\Personalize", "AppsUseLightTheme", -1) == null)

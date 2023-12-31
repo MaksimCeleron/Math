@@ -24,7 +24,7 @@
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
     <ApplicationRevision>0</ApplicationRevision>
-    <ApplicationVersion>1.0.1.%2a</ApplicationVersion>
+    <ApplicationVersion>1.1.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
     <BootstrapperEnabled>true</BootstrapperEnabled>
@@ -83,6 +83,12 @@
     <Compile Include="AboutForm.Designer.cs">
       <DependentUpon>AboutForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="MathWidgetForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MathWidgetForm.Designer.cs">
+      <DependentUpon>MathWidgetForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="MathForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -93,6 +99,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="AboutForm.resx">
       <DependentUpon>AboutForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MathWidgetForm.resx">
+      <DependentUpon>MathWidgetForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MathForm.resx">
       <DependentUpon>MathForm.cs</DependentUpon>

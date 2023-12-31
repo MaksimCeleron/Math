@@ -6,13 +6,13 @@ using Microsoft.Win32;
 
 namespace Math
 {
-    public partial class MathForm : Form
+    public partial class MathWidgetForm : Form
     {
         double num1 = 0;
         int operation = 0;
         bool clearall = false;
 
-        public MathForm()
+        public MathWidgetForm()
         {
             InitializeComponent();
         }
@@ -248,25 +248,6 @@ namespace Math
             ClearButton_Click(sender, e);
         }
 
-        private void PositiveNegativeButton_Click(object sender, EventArgs e)
-        {
-            if (InputTextBox.Text.First() == '-')
-            {
-                string tmp = InputTextBox.Text;
-
-                InputTextBox.Clear();
-                for (int repeats = 1; repeats < tmp.Length; repeats++)
-                {
-                    InputTextBox.Text += tmp[repeats];
-                }
-            }
-            else
-            {
-                InputTextBox.Text = '-' + InputTextBox.Text;
-            }
-            ClearButton.Enabled = InputTextBox.Text != "0";
-        }
-
         private void CalculateButton_Click(object sender, EventArgs e)
         {
             char operationforlabel = '\0';
@@ -416,118 +397,65 @@ namespace Math
             } else if (e.KeyValue == (char)Keys.Back && DeleteOneButton.Enabled)
             {
                 DeleteOneButton_Click(DeleteOneButton, null);
-            } else if (Control.ModifierKeys == Keys.Control && e.KeyValue == (char)Keys.W)
+            } else if (Control.ModifierKeys == Keys.Control && e.KeyValue == (char)Keys.M)
             {
-                MathWidgetForm MathWidgetForm = new MathWidgetForm();
-                MathWidgetForm.Show();
-                this.Visible = false;
+                WindowState = FormWindowState.Minimized;
             }
-        }
-
-        private void AutoToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            switch ((int)Registry.GetValue("HKEY_CURRENT_USER\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Themes\\Personalize", "AppsUseLightTheme", -1))
-            {
-                case 0:
-                    DarkToolStripMenuItem_Click(DarkToolStripMenuItem, null);
-                    break;
-                case 1:
-                    LightToolStripMenuItem_Click(LightToolStripMenuItem, null);
-                    break;
-            }
-
-            Properties.Settings.Default.Theme = 1;
-            Properties.Settings.Default.Save();
-
-            AutoToolStripMenuItem.Checked = true;
-            LightToolStripMenuItem.Checked = false;
-            DarkToolStripMenuItem.Checked = false;
-        }
-
-        private void LightToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            this.BackColor = Color.Empty;
-            MenuStrip.BackColor = Color.FromArgb(255, 227, 227, 227);
-            AutoToolStripMenuItem.BackColor = Color.Empty;
-            AutoToolStripMenuItem.ForeColor = Color.Empty;
-            LightToolStripMenuItem.BackColor = Color.Empty;
-            LightToolStripMenuItem.ForeColor = Color.Empty;
-            DarkToolStripMenuItem.BackColor = Color.Empty;
-            DarkToolStripMenuItem.ForeColor = Color.Empty;
-            Num1AndOperationLabel.ForeColor = Color.Empty;
-
-            Properties.Settings.Default.Theme = 2;
-            Properties.Settings.Default.Save();
-
-            AutoToolStripMenuItem.Checked = false;
-            LightToolStripMenuItem.Checked = true;
-            DarkToolStripMenuItem.Checked = false;
-        }
-
-        private void DarkToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            this.BackColor = Color.Black;
-            MenuStrip.BackColor = Color.LightGray;
-            AutoToolStripMenuItem.BackColor = Color.Black;
-            AutoToolStripMenuItem.ForeColor = Color.White;
-            LightToolStripMenuItem.BackColor = Color.Black;
-            LightToolStripMenuItem.ForeColor = Color.White;
-            DarkToolStripMenuItem.BackColor = Color.Black;
-            DarkToolStripMenuItem.ForeColor = Color.White;
-            Num1AndOperationLabel.ForeColor = Color.White;
-
-            Properties.Settings.Default.Theme = 3;
-            Properties.Settings.Default.Save();
-
-            AutoToolStripMenuItem.Checked = false;
-            LightToolStripMenuItem.Checked = false;
-            DarkToolStripMenuItem.Checked = true;
-        }
-
-        private void AboutToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            AboutForm AboutForm = new AboutForm();
-            AboutForm.ShowDialog();
         }
 
         private void MathForm_Load(object sender, EventArgs e)
         {
             if (Registry.GetValue("HKEY_CURRENT_USER\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Themes\\Personalize", "AppsUseLightTheme", -1) == null)
             {
-                AutoToolStripMenuItem.Available = false;
-
                 switch (Properties.Settings.Default.Theme)
                 {
-                    case 1: case 2:
-                        LightToolStripMenuItem_Click(LightToolStripMenuItem, null);
+                    case 1:
+                    case 2:
+                        this.BackColor = Color.Empty;
+                        Num1AndOperationLabel.ForeColor = Color.Empty;
                         break;
                     case 3:
-                        DarkToolStripMenuItem_Click(DarkToolStripMenuItem, null);
+                        this.BackColor = Color.Black;
+                        Num1AndOperationLabel.ForeColor = Color.White;
                         break;
                 }
-            } else
+            }
+            else
             {
                 switch (Properties.Settings.Default.Theme)
                 {
                     case 1:
-                        AutoToolStripMenuItem_Click(AutoToolStripMenuItem, null);
+                        switch ((int)Registry.GetValue("HKEY_CURRENT_USER\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Themes\\Personalize", "AppsUseLightTheme", -1))
+                        {
+                            case 0:
+                                this.BackColor = Color.Black;
+                                Num1AndOperationLabel.ForeColor = Color.White;
+                                break;
+                            case 1:
+                                this.BackColor = Color.Empty;
+                                Num1AndOperationLabel.ForeColor = Color.Empty;
+                                break;
+                        }
                         break;
                     case 2:
-                        LightToolStripMenuItem_Click(LightToolStripMenuItem, null);
+                        this.BackColor = Color.Empty;
+                        Num1AndOperationLabel.ForeColor = Color.Empty;
                         break;
                     case 3:
-                        DarkToolStripMenuItem_Click(DarkToolStripMenuItem, null);
+                        this.BackColor = Color.Black;
+                        Num1AndOperationLabel.ForeColor = Color.White;
                         break;
                 }
             }
         }
 
-        private void MathForm_FormClosed(object sender, FormClosedEventArgs e)
+        private void MathWidgetForm_FormClosed(object sender, FormClosedEventArgs e)
         {
-            Application.Exit();
+            MathForm MathForm = new MathForm();
+            MathForm.Show();
         }
 
-        private void InputTextBox_MouseClick(object sender, MouseEventArgs e)
+        private void InputTextBox_MouseDown(object sender, MouseEventArgs e)
         {
             if (Control.ModifierKeys == Keys.Alt && e.Button == MouseButtons.Left && DeleteOneButton.Enabled)
             {

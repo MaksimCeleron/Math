@@ -296,7 +296,7 @@ namespace Math
             }
             clearall = operation != 0;
 
-            InputTextBox.ResetText();
+            InputTextBox.Text = "0";
             Button0.Enabled = false;
             DecimalButton.Enabled = true;
             AddButton.Enabled = true;
